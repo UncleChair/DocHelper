@@ -126,6 +126,13 @@ func (dh *DocHelper) GenerateDocument(files []FileModTime) error {
 		outputPath = filepath.Join(dh.TargetDir, "file_modification_times.json")
 	}
 
+	// Display file information like adjust mode
+	for _, file := range files {
+		fmt.Printf("Documented: %s -> %s\n", file.Path, file.LastModified.Format("2006-01-02 15:04:05"))
+	}
+
+	fmt.Println()
+
 	ext := strings.ToLower(filepath.Ext(outputPath))
 
 	switch ext {
